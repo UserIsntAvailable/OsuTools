@@ -1,5 +1,7 @@
 ﻿namespace OsuParsers {
-    class Program {
+
+    struct Program {
+
         static void Main() {
 
         }

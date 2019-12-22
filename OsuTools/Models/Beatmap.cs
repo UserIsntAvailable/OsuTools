@@ -35,7 +35,7 @@ namespace OsuTools.Models {
 
         public GameMode Mode { get; set; }       // 0 for Standard, 1 for Taiko, 2 for Catch The Beat, 3 for Mania
 
-        #region Difficulty Vars (These are the default values)
+        #region Difficulty Properties (These are the default values)
         public double ApproachRate { get; set; } = 5.0;
         public double CircleSize { get; set; } = 5.0;
         public double HPDrainRate { get; set; } = 5.0;
@@ -50,7 +50,7 @@ namespace OsuTools.Models {
         public string Creator { get; set; }
         public string Version { get; set; }
         public string Source { get; set; }
-        public List<string> Tags { get; set; } = new List<string>();
+        public string Tags { get; set; }
         public int BeatmapID { get; set; }    // default 0 (if the map is not ranked)
         public int BeatmapSetID { get; set; } // default -1 (if the map is not ranked)
         #endregion
@@ -63,15 +63,9 @@ namespace OsuTools.Models {
         #region Properties that can be obtained only in the (osu!.db \ OsuAPI)
 
 
-        public double StarRating {
-
-            get { return StarRatingR; }
-
-            set { StarRatingR = Math.Round(value, 1); }
-        }                    // SR of the gamemode map ( Also obtained in (field) Stars )
+        public double StarRating { get; set; }          // SR of the gamemode map ( Also obtained in (field) Stars )
         public string Hash { get; set; }                // Beatmap hash
         public RankedStatus RankedStatus { get; set; }  // (4=ranked, 5=approved, 2=pending/graveyard) and loved?
-
         public int NbObjects {
             get {
                 return NbCircles + NbSliders + NbSpinners;
@@ -86,14 +80,14 @@ namespace OsuTools.Models {
         #region Properties that can be obtained only in the osu!.db file
 
         public string FilePath { get; set; }            // .osu file path
-        public int PreviewTime { get; set; }            // Time when the audio preview when hovering over a beatmap in beatmap select starts, in milliseconds.       
+        public int PreviewTime { get; set; }            // Time when hovering over a beatmap in beatmap select starts, in milliseconds.       
         #endregion
 
         #region Properties that can be obtained only in osuAPI
 
-        public int MaxCombo { get; set; }                             // Max Combo possible obtained in the map
-        public double PeformancePoints { get; set; }                  // Total PP of the map
-        public List<double> Stars { get; set; } = new List<double>(); // StarRating, Aim and Speed Stars
+        public int? MaxCombo { get; set; }                             // Max Combo possible obtained in the map
+        public double? PeformancePoints { get; set; }                  // Total PP of the map
+        public List<double> Stars { get; set; } = new List<double>();  // StarRating, Aim and Speed Stars
         #endregion
 
         #region Property that need be calculated
@@ -101,11 +95,6 @@ namespace OsuTools.Models {
         public int MaxScore { get; set; }               // Max Score possible obtained in the map
         #endregion
         #endregion
-        #endregion
-
-        #region Private Property
-
-        private double StarRatingR { get; set; }
         #endregion
     }
 }

@@ -120,7 +120,7 @@ namespace OsuTools.Utils {
             }
 
             else {
-                throw new Exception("This bitwise doesn't exit");
+                throw new ArgumentException("This bitwise isn't valid");
             }
 
             return modsSB.ToString();

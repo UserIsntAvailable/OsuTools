@@ -4,7 +4,7 @@ using OsuTools.Utils;
 using OsuTools.Models;
 
 namespace OsuParsers {
-    static class ScoreDatabaseParser {
+    public static class ScoreDatabaseParser {
 
         #region Private Property
         private static BinaryReader Reader { get; set; }
@@ -55,7 +55,7 @@ namespace OsuParsers {
         /// Get Score from the current Beatmap
         /// </summary>
         /// <returns>Scores of the current Beatmap</returns>
-        private static Score GetScore() {
+        private static Score GetScore()  {
 
             Score score = new Score();
 
@@ -101,6 +101,8 @@ namespace OsuParsers {
             else if (version >= 20121008) {
                 score.OnlineScoreID = Reader.ReadInt32();
             }
+
+            Reader.Dispose();
 
             return score;
         }
