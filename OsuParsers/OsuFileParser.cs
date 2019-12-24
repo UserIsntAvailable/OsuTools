@@ -120,7 +120,7 @@ namespace OsuParsers {
             // Get the PropertyInfo of the 
             PropertyInfo property = typeof(Beatmap).GetProperty(propertyName);
 
-            // Is this property doesn't exits on the Beatmap Type return
+            // If this property doesn't exits on the Beatmap Type, return
             if (property == null) return;
 
             // If is Generic ( List<string> ) => ( TimingPoints or HitObjects )

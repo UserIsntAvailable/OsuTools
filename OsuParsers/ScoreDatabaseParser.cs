@@ -7,9 +7,10 @@ namespace OsuParsers {
     public static class ScoreDatabaseParser {
 
         #region Private Property
+
         private static BinaryReader Reader { get; set; }
         #endregion
-
+        
         /// <summary>
         /// Parse a Score.db
         /// </summary>
