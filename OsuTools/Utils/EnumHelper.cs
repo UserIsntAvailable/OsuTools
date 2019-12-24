@@ -35,7 +35,7 @@ namespace OsuTools.Utils {
                     "CN" => (int)Mods.Cinema,
                     "TP" => (int)Mods.TargetPractice,
                     "V2" => (int)Mods.ScoreV2,
-                    _ => throw new ArgumentException($"This mod doesn't exit {mods[i..(i + 2)]}"),
+                    _ => throw new ArgumentException($"This mod doesn't exit {mods[i..(i + 2)]}", mods),
                 };
             }
 
@@ -53,7 +53,7 @@ namespace OsuTools.Utils {
             T mods = (T)Enum.ToObject(typeof(T), fieldInt);
 
             if (int.TryParse(mods.ToString(), out _)) {
-                throw new ArgumentOutOfRangeException($"{fieldInt} is out of range in {typeof(T)}");
+                throw new ArgumentOutOfRangeException("fieldInt", fieldInt, $"{fieldInt} is out of range in {typeof(T)}");
             }
 
             return mods;

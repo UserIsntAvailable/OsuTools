@@ -12,7 +12,14 @@ namespace OsuParsers {
 
         #region Private Properties
 
+        // Returned from Parse()
         private static Beatmap Beatmap { get; set; } = new Beatmap();
+
+        // Sections that I will not use on this parser ( Simply because I don't need them )
+        private static List<string> UselessSections { get; set; } = new List<string> { "Colours", "Events", "Editor" };
+
+        // Properties that need to add values to a List instead of assign
+        private static List<string> GenericProperties { get; set; } = new List<string> { "TimingPoints", "HitObjects" };
 
         #region Private Regex Patterns
 
@@ -74,9 +81,9 @@ namespace OsuParsers {
                     continue;
                 }
 
-                if (new List<string> { "Colours", "Events", "Editor" }.Contains(currentSection)) continue;
+                if (UselessSections.Contains(currentSection)) continue;
 
-                if (new List<string> { "TimingPoints", "HitObjects" }.Contains(currentSection)) {
+                if (GenericProperties.Contains(currentSection)) {
                     SetValueToBeatmapProperty(currentSection, line);
                 }
 
@@ -85,10 +92,6 @@ namespace OsuParsers {
                     keyvalue = keyvaluePattern.Match(line);
                     string key = keyvalue.Groups[1].Value;
                     string value = keyvalue.Groups[2].Value;
-
-                    if (new List<string> { "AudioFilename", "AudioLeadIn", "PreviewTime", "Countdown", "SampleSet",
-                        "StackLeniency", "LetterboxInBreaks", "WidescreenStoryboard", "TitleUnicode", "ArtistUnicode",
-                        "EpilepsyWarning"}.Contains(key)) continue;
 
                     if (key == "Mode") {
 
@@ -114,12 +117,19 @@ namespace OsuParsers {
         ///                              is the actual value of the property.   </param>
         private static void SetValueToBeatmapProperty(string propertyName, object value) {
 
+            // Get the PropertyInfo of the 
             PropertyInfo property = typeof(Beatmap).GetProperty(propertyName);
 
+            // Is this property doesn't exits on the Beatmap Type return
+            if (property == null) return;
+
+            // If is Generic ( List<string> ) => ( TimingPoints or HitObjects )
             if (property.PropertyType.IsGenericType) {
 
+                // Get the current value of the List<string>
                 var propertyList = property.GetValue(Beatmap);
 
+                // Add value to the current List<string>
                 propertyList.GetType()
                             .GetMethod("Add")
                             ?.Invoke(propertyList, new[] { (string)value });
@@ -127,8 +137,10 @@ namespace OsuParsers {
 
             else {
 
+                // Convert value to the true Type of the property
                 value = Convert.ChangeType(value, property.PropertyType);
 
+                // Set value to the property 
                 property.SetValue(Beatmap, value);
             }
         }
