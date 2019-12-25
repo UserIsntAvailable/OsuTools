@@ -42,8 +42,8 @@ namespace OsuTools.Utils {
         /// </summary>
         /// <param name="timestand"></param>
         /// <returns>Date format (Month, Day, Year, Hours, Minutes, Seconds)</returns>
-        public static DateTime GetDate(long timestand)
-            => new DateTime(timestand - 144000000000, DateTimeKind.Unspecified);
+        public static DateTime GetDate(ulong timestand)
+            => new DateTime((long)timestand - 144000000000, DateTimeKind.Unspecified);
 
         /// <summary>
         /// Convert a mod bitwise into his string representation abbreviated 

@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OsuTools\OsuTools.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="OsuTools">
       <HintPath>..\OsuTools\bin\Debug\netcoreapp3.1\OsuTools.dll</HintPath>
     </Reference>
