@@ -29,7 +29,7 @@ namespace OsuTools.Models {
 
         #region Properties that can be obtained in (.osu \ osu!.db \ OsuAPI)
 
-        public GameMode Mode { get; set; }
+        public Ruleset Mode { get; set; }
 
         #region Difficulty Properties
 

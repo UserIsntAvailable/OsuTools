@@ -95,7 +95,7 @@ namespace OsuParsers {
 
                     if (key == "Mode") {
 
-                        GameMode mode = GetEnumField<GameMode>(long.Parse(value));
+                        Ruleset mode = GetEnumField<Ruleset>(long.Parse(value));
                         SetValueToBeatmapProperty("Mode", mode);
                     }
 

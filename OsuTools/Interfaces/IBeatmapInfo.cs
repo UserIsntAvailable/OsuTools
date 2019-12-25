@@ -7,7 +7,7 @@ namespace OsuTools.Interfaces {
 
         // Create an IScoreInfo
 
-        GameMode Mode { get; set; }
+        Ruleset Mode { get; set; }
         string Hash { get; set; }
         int MaxCombo { get; set; }
     }

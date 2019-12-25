@@ -18,7 +18,7 @@ namespace OsuTools.Models {
 
         #region Public Properties
 
-        public GameMode Mode { get; set; }
+        public Ruleset Mode { get; set; }
         public string Hash { get; set; }
         public int MaxCombo { get; set; }
 
