@@ -60,7 +60,7 @@ namespace OsuParsers {
 
             Score score = new Score();
 
-            score.Mode = EnumHelper.GetEnumField<Ruleset>(Reader.ReadByte());
+            score.Ruleset = EnumHelper.GetEnumField<Ruleset>(Reader.ReadByte());
 
             // Version of this score (e.g. 20150203)
             int version = Reader.ReadInt32();

@@ -12,13 +12,13 @@ namespace OsuTools.Models {
         internal Score() { }
 
         public override string ToString() {
-            return $"{Mode} - {Accuracy} - {ModsUsed} - {Player}";
+            return $"{Ruleset} - {Accuracy} - {ModsUsed} - {Player}";
         }
         #endregion
 
         #region Public Properties
 
-        public Ruleset Mode { get; set; }
+        public Ruleset Ruleset { get; set; }
         public string Hash { get; set; }
         public int MaxCombo { get; set; }
 
