@@ -7,7 +7,7 @@ using OsuTools.Models;
 using OsuTools.Exceptions;
 using static OsuTools.Utils.EnumHelper;
 
-namespace OsuParsers {
+namespace OsuTools.Tools.Parsers {
     public static class OsuFileParser {
 
         #region Private Properties

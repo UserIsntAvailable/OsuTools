@@ -3,7 +3,7 @@ using System.Linq;
 using OsuTools.Utils;
 using OsuTools.Models;
 
-namespace OsuParsers {
+namespace OsuTools.Tools.Parsers {
     public static class ScoreDatabaseParser {
 
         #region Private Property
