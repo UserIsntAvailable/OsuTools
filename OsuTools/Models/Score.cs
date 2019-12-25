@@ -34,7 +34,7 @@ namespace OsuTools.Models {
         public long OnlineScoreID { get; set; }
 
         public double Accuracy { get { return GetAcc(Hits); } }
-        public DateTime Date { get { return GetDate(Timestand); } }
+        public DateTime Date { get { return GetDate((ulong)Timestand); } }
         #endregion
 
         #region Private Property
