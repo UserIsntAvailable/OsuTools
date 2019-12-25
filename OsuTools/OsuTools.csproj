@@ -2,16 +2,13 @@
 
   <PropertyGroup>
     <LangVersion>preview</LangVersion>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <StartupObject></StartupObject>
     <ApplicationIcon />
   </PropertyGroup>
 
   <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>OsuParsers</_Parameter1>
-    </AssemblyAttribute>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
