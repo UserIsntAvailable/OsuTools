@@ -31,7 +31,7 @@ namespace OsuTools.Models {
             get { return modsUsed; }
             set { modsUsed = BitwiseToString(long.Parse(value)); }}
         public long Timestand { get; set; }
-        public long OnlineScoreID { get; set; }
+        public long OnlineScoreId { get; set; }
 
         public double Accuracy { get { return GetAcc(Hits); } }
         public DateTime Date { get { return GetDate((ulong)Timestand); } }
