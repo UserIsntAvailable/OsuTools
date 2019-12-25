@@ -6,9 +6,9 @@ namespace OsuTools.Utils {
     internal static class BinaryReaderHelper {
 
         /// <summary>
-        /// Get an Osu! string from the binary reader
+        /// Get an Osu! string from this binary reader
         /// </summary>
-        /// <param name="reader">the binary reader</param>
+        /// <param name="reader">The binary reader</param>
         /// <returns>The osu string</returns>
         internal static string ReadOsuString(this BinaryReader reader) {
 

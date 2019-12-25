@@ -25,7 +25,7 @@ namespace OsuTools.Utils {
         /// <summary>
         /// Get the Accuracy in %
         /// </summary>
-        /// <param name="hits">Hits instance</param>
+        /// <param name="hits"><see cref="Hits"> instance</param>
         /// <returns>Acc in %</returns>
         internal static double GetAcc(Hits hits) {
 
@@ -46,7 +46,7 @@ namespace OsuTools.Utils {
             => new DateTime((long)timestand - 144000000000, DateTimeKind.Unspecified);
 
         /// <summary>
-        /// Convert a mod bitwise into his string representation abbreviated 
+        /// Convert a mod bitwise <see cref="Mods"> into his string representation abbreviated 
         /// </summary>
         /// <param name="bitwise">Mod bitwise</param>
         /// <returns>String representation abbreviated</returns>

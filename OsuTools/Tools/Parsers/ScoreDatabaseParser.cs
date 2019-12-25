@@ -15,7 +15,7 @@ namespace OsuTools.Tools.Parsers {
         /// Parse a Score.db
         /// </summary>
         /// <param name="path">The path of your score.db</param>
-        /// <returns>The ScoreDatabase</returns>
+        /// <returns><see cref="ScoreDatabase"></returns>
         public static ScoreDatabase Parse(string path) {
 
             Reader = new BinaryReader(File.OpenRead(path));
@@ -35,7 +35,7 @@ namespace OsuTools.Tools.Parsers {
         #region Private Methods
 
         /// <summary>
-        /// Get Beatmaps scores from the ScoreDatabase
+        /// Get Beatmaps scores from <see cref="ScoreDatabase">
         /// </summary>
         /// <returns>Beatmaps with his scores</returns>
         private static Beatmap GetBeatmap() {
@@ -53,9 +53,9 @@ namespace OsuTools.Tools.Parsers {
         }
 
         /// <summary>
-        /// Get Score from the current Beatmap
+        /// Get Score from <see cref="Beatmap">
         /// </summary>
-        /// <returns>Scores of the current Beatmap</returns>
+        /// <returns>Scores of the current <see cref="Beatmap"></returns>
         private static Score GetScore()  {
 
             Score score = new Score();

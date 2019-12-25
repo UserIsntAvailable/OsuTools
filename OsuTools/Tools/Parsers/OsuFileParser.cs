@@ -41,7 +41,7 @@ namespace OsuTools.Tools.Parsers {
         /// Parse an .osu file
         /// </summary>
         /// <param name="path">The path of the .osu</param>
-        /// <returns>Beatmap Object</returns>
+        /// <returns><see cref="Beatmap"> Object</returns>
         public static Beatmap Parse(string path) {
 
             Match keyvalue;
@@ -109,15 +109,13 @@ namespace OsuTools.Tools.Parsers {
         }
 
         /// <summary>
-        /// Set a value to the beatmap object[line 13] with the property names required.
+        /// Set a value to <see cref="Beatmap"> with the property names required.
         /// </summary>
-        /// <param name="propertyName">The property name that have the beatmap object [Beatmap Type]</param>
-        /// <param name="value">The value that you want set to the property.
-        ///                     WARNING: If you will use this make attention that the value set 
-        ///                              is the actual value of the property.   </param>
+        /// <param name="propertyName">The property name that have <see cref="Beatmap"></param>
+        /// <param name="value">The value that you want set to the property.</param>
         private static void SetValueToBeatmapProperty(string propertyName, object value) {
 
-            // Get the PropertyInfo of the 
+            // Get the PropertyInfo of the Beatmap
             PropertyInfo property = typeof(Beatmap).GetProperty(propertyName);
 
             // If this property doesn't exits on the Beatmap Type, return
@@ -132,7 +130,7 @@ namespace OsuTools.Tools.Parsers {
                 // Add value to the current List<string>
                 propertyList.GetType()
                             .GetMethod("Add")
-                            ?.Invoke(propertyList, new[] { (string)value });
+                            .Invoke(propertyList, new[] { (string)value });
             }
 
             else {
