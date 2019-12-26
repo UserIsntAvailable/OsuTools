@@ -13,27 +13,41 @@ namespace OsuTools.Tools.Parsers {
 
         #region Private Properties
 
-        // Returned from Parse()
-        private static Beatmap Beatmap { get; set; } = new Beatmap();
+        /// <summary>
+        /// Returned from Parse()
+        /// </summary>
+        private static readonly Beatmap Beatmap = new Beatmap();
 
-        // Sections that I will not use on this parser ( Simply because I don't need them )
-        private static List<string> UselessSections { get; set; } = new List<string> { "Colours", "Events", "Editor" };
+        /// <summary>
+        /// Sections that I will not use on this parser ( Simply because I don't need them )
+        /// </summary>
+        private static readonly List<string> UselessSections = new List<string> { "Colours", "Events", "Editor" };
 
-        // Properties that need to add values to a List instead of assign
-        private static List<string> GenericProperties { get; set; } = new List<string> { "TimingPoints", "HitObjects" };
+        /// <summary>
+        /// Properties that need to add values to a List instead of assign
+        /// </summary>
+        private static readonly List<string> GenericProperties = new List<string> { "TimingPoints", "HitObjects" };
 
         #region Private Regex Patterns
 
-        // Sections such as [General], [Metadata], etc...
+        /// <summary>
+        /// Sections such as [General], [Metadata], etc...
+        /// </summary>
         private static readonly Regex sectionPattern = new Regex(@"^\[(\w+)\]$");
 
-        // Key: (ar), Value: (9.3), etc...
+        /// <summary>
+        /// Key: (ar), Value: (9.3), etc...
+        /// </summary>
         private static readonly Regex keyvaluePattern = new Regex(@"^(\w+)\s*:\s*(.*)$");
 
-        // osu file format v12, 13, 14, etc...
+        /// <summary>
+        /// osu file format v12, 13, 14, etc...
+        /// </summary>
         private static readonly Regex osuversionPattern = new Regex(@"^[\s\ufeff\x7f]*osu file format v(\d+)\s*$");
 
-        // A string.Empty
+        /// <summary>
+        /// A string.Empty
+        /// </summary>
         private static readonly Regex blanklinePattern = new Regex(@"^[\s\ufeff\x7f]*$");
         #endregion
         #endregion

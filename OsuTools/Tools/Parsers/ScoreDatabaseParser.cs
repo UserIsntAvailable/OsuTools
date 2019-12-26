@@ -8,10 +8,10 @@ using OsuTools.Models.Database;
 namespace OsuTools.Tools.Parsers {
     public static class ScoreDatabaseParser {
 
-        #region Private Property
-
-        private static BinaryReader Reader { get; set; }
-        #endregion
+        /// <summary>
+        /// Reader used from Parse.
+        /// </summary>
+        private static BinaryReader Reader;
         
         /// <summary>
         /// Parse a Score.db
