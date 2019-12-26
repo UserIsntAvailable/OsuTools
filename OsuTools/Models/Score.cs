@@ -1,5 +1,5 @@
 ﻿using System;
-using OsuTools.Interfaces;
+using OsuTools.Models.Beatmaps;
 using static OsuTools.Utils.ScoreHelper;
 
 namespace OsuTools.Models {

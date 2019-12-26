@@ -2,6 +2,7 @@
 using OsuTools.Models;
 using OsuTools.Exceptions;
 using OsuTools.Tools.Parsers;
+using OsuTools.Models.Beatmaps;
 using static OsuTools.Tests.Resources.ResourcesHelper;
 
 namespace OsuTools {

@@ -3,7 +3,7 @@ using System.Linq;
 using OsuTools.Utils;
 using OsuTools.Models;
 using OsuTools.Models.Beatmaps;
-using OsuTools.Models.Databases;
+using OsuTools.Models.Database;
 
 namespace OsuTools.Tools.Parsers {
     public static class ScoreDatabaseParser {
@@ -104,8 +104,6 @@ namespace OsuTools.Tools.Parsers {
             else if (version >= 20121008) {
                 score.OnlineScoreID = Reader.ReadInt32();
             }
-
-            Reader.Dispose();
 
             return score;
         }
