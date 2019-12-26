@@ -97,10 +97,10 @@ namespace OsuTools.Tools.Parsers {
             Reader.ReadBytes(4);
 
             if (version >= 20140721) {
-                score.OnlineScoreId = Reader.ReadInt64();
+                score.OnlineScoreID = Reader.ReadInt64();
             }
             else if (version >= 20121008) {
-                score.OnlineScoreId = Reader.ReadInt32();
+                score.OnlineScoreID = Reader.ReadInt32();
             }
 
             Reader.Dispose();

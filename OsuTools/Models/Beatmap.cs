@@ -50,8 +50,8 @@ namespace OsuTools.Models {
         public string Version { get; set; }
         public string Source { get; set; }
         public string Tags { get; set; }
-        public int BeatmapId { get; set; }    // default 0 (if the map is not ranked)
-        public int BeatmapSetId { get; set; } // default -1 (if the map is not ranked)
+        public int BeatmapID { get; set; }    // default 0 (if the map is not ranked)
+        public int BeatmapSetID { get; set; } // default -1 (if the map is not ranked)
         #endregion
 
         public List<string> TimingPoints { get; set; } = new List<string>();
