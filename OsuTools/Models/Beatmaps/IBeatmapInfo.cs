@@ -1,6 +1,6 @@
 ﻿using OsuTools.Models;
 
-namespace OsuTools.Interfaces {
+namespace OsuTools.Models.Beatmaps {
     public interface IBeatmapInfo {
 
         // Change all the ToString() Methods

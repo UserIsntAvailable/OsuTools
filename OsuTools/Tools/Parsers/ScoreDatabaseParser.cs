@@ -2,6 +2,8 @@
 using System.Linq;
 using OsuTools.Utils;
 using OsuTools.Models;
+using OsuTools.Models.Beatmaps;
+using OsuTools.Models.Databases;
 
 namespace OsuTools.Tools.Parsers {
     public static class ScoreDatabaseParser {

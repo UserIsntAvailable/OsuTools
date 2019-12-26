@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using OsuTools.Models;
 using OsuTools.Exceptions;
+using OsuTools.Models.Beatmaps;
 using static OsuTools.Utils.EnumHelper;
 
 namespace OsuTools.Tools.Parsers {

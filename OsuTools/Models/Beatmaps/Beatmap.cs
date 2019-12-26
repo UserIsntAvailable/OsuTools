@@ -1,7 +1,6 @@
-﻿using OsuTools.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace OsuTools.Models {
+namespace OsuTools.Models.Beatmaps {
     public class Beatmap : IBeatmapInfo {
 
         #region Constructor
