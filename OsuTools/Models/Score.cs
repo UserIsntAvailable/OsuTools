@@ -20,7 +20,7 @@ namespace OsuTools.Models {
 
         public Ruleset Ruleset { get; set; }
         public string Hash { get; set; }
-        public int MaxCombo { get; set; }
+        public int? MaxCombo { get; set; }
 
         public string Player { get; set; }
         public string HashScore { get; set; }

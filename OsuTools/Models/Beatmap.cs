@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using OsuTools.Interfaces;
+using System.Collections.Generic;
 
 namespace OsuTools.Models {
-    public class Beatmap {
+    public class Beatmap : IBeatmapInfo {
 
         #region Constructor
 
@@ -12,7 +13,7 @@ namespace OsuTools.Models {
         /// </summary>
         /// <returns>string</returns>
         public override string ToString() {
-            return $"{Artist} - {Title}[{Version}]({Creator}) {Mode}\n" +
+            return $"{Artist} - {Title}[{Version}]({Creator}) {Ruleset}\n" +
                    $"CS: {CircleSize} AR: {ApproachRate} " +
                    $"OD: {OverallDifficulty} HP: {HPDrainRate}";
         }
@@ -29,7 +30,7 @@ namespace OsuTools.Models {
 
         #region Properties that can be obtained in (.osu \ osu!.db \ OsuAPI)
 
-        public Ruleset Mode { get; set; }
+        public Ruleset Ruleset { get; set; }
 
         #region Difficulty Properties
 

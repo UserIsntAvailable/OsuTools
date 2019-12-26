@@ -69,6 +69,7 @@ namespace OsuTools.Tools.Parsers {
                         }
                         continue;
                     }
+
                     else {
                         throw new OsuFileFormatException($"The line: {line} isn't well formated");
                     }

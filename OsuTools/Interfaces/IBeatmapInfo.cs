@@ -9,6 +9,6 @@ namespace OsuTools.Interfaces {
 
         Ruleset Ruleset { get; set; }
         string Hash { get; set; }
-        int MaxCombo { get; set; }
+        int? MaxCombo { get; set; }
     }
 }
