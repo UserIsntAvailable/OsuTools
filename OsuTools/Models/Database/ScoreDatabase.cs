@@ -3,17 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace OsuTools.Models.Database {
-    public class ScoreDatabase : IDatabase {
+    public class ScoreDatabase : IDatabase, IEnumerable<Score> {
 
         public IEnumerable<Beatmap> Beatmaps { get; set; }
 
-        public IEnumerator GetEnumerator() {
+        #region IEnumerable Interface
+
+        public IEnumerator<Score> GetEnumerator() {
 
             foreach (var beatmap in Beatmaps) {
+
                 foreach (var score in beatmap.Scores) {
                     yield return score;
                 }
             }
         }
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => GetEnumerator();
+        #endregion
     }
 }
