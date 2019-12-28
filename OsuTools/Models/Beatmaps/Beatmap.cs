@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace OsuTools.Models.Beatmaps {
-    public class Beatmap : IBeatmapInfo {
+    public class Beatmap : IBeatmapInfo, IEquatable<Beatmap> {
 
         #region Constructor
 
@@ -13,8 +15,47 @@ namespace OsuTools.Models.Beatmaps {
         /// <returns>string</returns>
         public override string ToString() {
             return $"{Artist} - {Title}[{Version}]({Creator}) {Ruleset}\n" +
-                   $"CS: {CircleSize} AR: {ApproachRate} " +
-                   $"OD: {OverallDifficulty} HP: {HPDrainRate}";
+                   $"CS: {CircleSize:F1}        AR: {ApproachRate:F1} " +
+                   $"OD: {OverallDifficulty:F1} HP: {HPDrainRate:F1}";
+        }
+
+        public override bool Equals(object other) {
+
+            if (!(other is Beatmap)) return false;
+
+            return Equals((Beatmap)other);
+        }
+
+        public bool Equals([AllowNull] Beatmap other) {
+
+            /* The osu!.db doesn't have all his data updated all the time because if the .osu file
+             * of a beatmap is changed, the osu!.db don't will be updated until you rebuilt it.
+              
+             * This is why Equals need to verified differents things. */
+
+            if (Scores == other.Scores && Hash == other.Hash) return true;
+
+            // IDK how a beatmap can have differents BeatmapID's...
+            else if (BeatmapID == other.BeatmapID) return true;
+
+            else if (ToString() == other.ToString()) return true;
+
+            return false;
+        }
+
+        public override int GetHashCode() {
+
+            int hash = 19;
+
+            hash = hash * 47 + Scores.GetHashCode();
+            hash = hash * 47 + Ruleset.GetHashCode();
+            hash = hash * 47 + Hash.GetHashCode();
+            hash = hash * 47 + RankedStatus.GetHashCode();
+            hash = hash * 47 + FilePath.GetHashCode();
+            hash = hash * 47 + PreviewTime.GetHashCode();
+            hash = hash * 47 + MaxCombo.GetHashCode();
+
+            return hash;
         }
         #endregion
 
@@ -61,7 +102,7 @@ namespace OsuTools.Models.Beatmaps {
 
         public double StarRating { get; set; }          // SR of the gamemode map ( Also obtained in (field) Stars )
         public string Hash { get; set; }                // Beatmap hash
-        public RankedStatus RankedStatus { get; set; }  
+        public RankedStatus RankedStatus { get; set; }
         public int NbObjects {
             get {
                 return NbCircles + NbSliders + NbSpinners;

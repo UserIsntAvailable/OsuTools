@@ -50,6 +50,23 @@ namespace OsuTools.Utils {
 
             throw new StringNotValidException("Couldn't not read valid string from .db file");
         }
+
+        /// <summary>
+        /// Read an Int-DoublePair from this binary reader <see cref="https://osu.ppy.sh/help/wiki/osu%21_File_Formats/Osr_%28file_format%29">
+        /// </summary>
+        /// <param name="reader">The binary reader</param>
+        /// <returns>Start Rating of the current bitwise combination</returns>
+        internal static double ReadIntDoublePair(this BinaryReader reader) {
+
+            // (Byte) Unknown
+            // (Int)  Current bitwise combination. See: (https://osu.ppy.sh/help/wiki/osu%21_File_Formats/Osr_%28file_format%29)
+            // (Byte) Unknown
+            reader.ReadBytes(6);
+
+            double starRating = reader.ReadDouble();
+
+            return starRating;
+        }
     }
 }
 
