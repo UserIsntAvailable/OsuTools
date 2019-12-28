@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace OsuTools.Models.Database {
-    public class ScoreDatabase : IDatabase, IEnumerable<Score> {
+    public class ScoreDatabase : IEnumerable<Score> {
+
+        public int Version { get; set; }
 
         public IEnumerable<Beatmap> Beatmaps { get; set; }
 
