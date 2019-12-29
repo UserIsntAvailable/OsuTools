@@ -66,9 +66,9 @@ namespace OsuTools.Tools.Readers {
             // Version of this score (e.g. 20150203)
             int version = Reader.ReadInt32();
 
-            score.Hash = Reader.ReadOsuString();
+            score.BeatmapHash = Reader.ReadOsuString();
             score.Player = Reader.ReadOsuString();
-            score.HashScore = Reader.ReadOsuString();
+            score.Hash = Reader.ReadOsuString();
 
             #region Hits parser
 
@@ -89,12 +89,12 @@ namespace OsuTools.Tools.Readers {
             score.PerfectCombo = Reader.ReadBoolean();
             score.ModsUsed = Reader.ReadInt32().ToString();
 
-            //String (Should always be empty)
+            // Should always be empty
             Reader.ReadOsuString();
 
             score.Timestand = Reader.ReadInt64();
 
-            //Int (Should always be 0xffffffff (-1))
+            // Int (Should always be 0xffffffff [-1])
             Reader.ReadBytes(4);
 
             if (version >= 20140721) {

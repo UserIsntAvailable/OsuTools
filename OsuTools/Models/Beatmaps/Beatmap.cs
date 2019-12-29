@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace OsuTools.Models.Beatmaps {
-    public class Beatmap : IBeatmapInfo, IEquatable<Beatmap> {
+    public class Beatmap : IEquatable<Beatmap> {
 
         #region Constructor
 
