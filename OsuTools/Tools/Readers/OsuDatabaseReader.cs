@@ -99,7 +99,7 @@ namespace OsuTools.Tools.Readers {
             // The .osu name of the beatmap
             var osuFile = Reader.ReadOsuString();
 
-            beatmap.RankedStatus = GetEnumField<RankedStatus>(Reader.ReadByte());
+            beatmap.RankedStatus = (RankedStatus)Reader.ReadByte();
             beatmap.NbCircles = Reader.ReadInt16();
             beatmap.NbSliders = Reader.ReadInt16();
             beatmap.NbSpinners = Reader.ReadInt16();
@@ -228,7 +228,7 @@ namespace OsuTools.Tools.Readers {
              * (Float) Stack leniency */
             Reader.ReadBytes(14);
 
-            beatmap.Ruleset = GetEnumField<Ruleset>(Reader.ReadByte());
+            beatmap.Ruleset = (Ruleset)Reader.ReadByte();
 
             // Select the right starRating
             switch (beatmap.Ruleset) {

@@ -115,7 +115,7 @@ namespace OsuTools.Tools.Readers {
 
                     if (key == "Mode") {
 
-                        Ruleset mode = GetEnumField<Ruleset>(long.Parse(value));
+                        Ruleset mode = (Ruleset)long.Parse(value);
                         SetValueToBeatmapProperty("Mode", mode);
                     }
 

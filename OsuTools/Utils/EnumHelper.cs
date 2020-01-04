@@ -41,22 +41,5 @@ namespace OsuTools.Utils {
 
             return mod;
         }
-
-        /// <summary>
-        /// Get the field of an Enum with his int representation
-        /// </summary>
-        /// <typeparam name="T">Enum Type</typeparam>
-        /// <param name="fieldInt">The int who represents the field</param>
-        /// <returns>The Enum Field</returns>
-        internal static T GetEnumField<T>(long fieldInt) where T : Enum {
-
-            T mods = (T)Enum.ToObject(typeof(T), fieldInt);
-
-            if (int.TryParse(mods.ToString(), out _)) {
-                throw new ArgumentOutOfRangeException("fieldInt", fieldInt, $"{fieldInt} is out of range in {typeof(T)}");
-            }
-
-            return mods;
-        }
     }
 }
