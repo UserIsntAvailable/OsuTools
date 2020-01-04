@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text;
 using OsuTools.Models;
+using OsuTools.Models.Scores;
 
 #nullable enable
 namespace OsuTools.Utils {

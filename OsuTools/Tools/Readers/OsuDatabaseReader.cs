@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using OsuTools.Utils;
 using OsuTools.Models;
@@ -58,7 +57,7 @@ namespace OsuTools.Tools.Readers {
                 Version = dbVersion,
 
                 // Reader.ReadInt32() = The total number of Beatmaps in the ScoreDatabase
-                Beatmaps = from _ in Enumerable.Range(0, Reader.ReadInt32()) select GetBeatmap()
+                Beatmaps = from _ in Enumerable.Range(0, Reader.ReadInt32()) select ReadBeatmap()
             };
 
             return osuDatabase;
@@ -68,7 +67,7 @@ namespace OsuTools.Tools.Readers {
         /// Get a Beatmap from the osu!.db
         /// </summary>
         /// <returns><see cref="Beatmap"></returns>
-        private static Beatmap GetBeatmap() {
+        private static Beatmap ReadBeatmap() {
 
             var beatmap = new Beatmap();
 

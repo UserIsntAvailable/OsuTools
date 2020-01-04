@@ -6,7 +6,6 @@ using OsuTools.Models.Beatmaps;
 using static OsuTools.Tests.Resources.ResourcesHelper;
 
 namespace OsuTools.Tests.Tools.Readers {
-
     public class OsuFileReaderTests {
 
         private string filePath;
@@ -28,7 +27,7 @@ namespace OsuTools.Tests.Tools.Readers {
         }
 
         [Fact]
-        public void ParsingASingleFileTest() {
+        public void ReadingASingleFileTest() {
 
             filePath = GetResourcePathFile("Wakeshima Kanon - World's End, Girl's Rondo.osu");
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OsuTools.Models.Scores;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
@@ -7,7 +8,7 @@ namespace OsuTools.Models.Beatmaps {
 
         #region Constructor
 
-        internal Beatmap() { }
+        public Beatmap() { }
 
         /// <summary>
         /// Change Beatmap string format

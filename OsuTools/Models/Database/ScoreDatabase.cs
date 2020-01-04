@@ -1,13 +1,10 @@
-﻿using OsuTools.Models.Beatmaps;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using OsuTools.Models.Scores;
+using OsuTools.Models.Beatmaps;
 
 namespace OsuTools.Models.Database {
     public class ScoreDatabase : IEnumerable<Score> {
-
-        public int Version { get; set; }
-
-        public IEnumerable<Beatmap> Beatmaps { get; set; }
 
         #region IEnumerable Interface
 
@@ -24,5 +21,9 @@ namespace OsuTools.Models.Database {
         IEnumerator IEnumerable.GetEnumerator()
             => GetEnumerator();
         #endregion
+
+        public int Version { get; set; }
+
+        public IEnumerable<Beatmap> Beatmaps { get; set; }
     }
 }

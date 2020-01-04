@@ -11,7 +11,7 @@ namespace OsuTools.Tests.Tools.Readers {
         private string filePath;
 
         [Fact]
-        public void ParsingASingleFileTest() {
+        public void ReadingASingleFileTest() {
 
             filePath = GetResourcePathFile("osu!.db");
 

@@ -1,31 +1,29 @@
 ﻿using System;
-using OsuTools.Models.Beatmaps;
+using System.IO;
+using OsuTools.Utils;
 using static OsuTools.Utils.ScoreHelper;
 
-namespace OsuTools.Models {
-    public class Score {
+namespace OsuTools.Models.Scores {
+    public class Replay : IScore {
 
         #region Constructor
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        internal Score() { }
+
+        public Replay() { }
 
         public override string ToString() {
-            return $"{Ruleset} - {Accuracy} - {ModsUsed} - {Player}";
+            return $"{Player} - {Ruleset} - {ModsUsed} - {Accuracy}";
         }
         #endregion
 
-        #region Public Properties
+        #region IScore Interface
 
         public Ruleset Ruleset { get; set; }
         public string BeatmapHash { get; set; }
-        public int? MaxCombo { get; set; }
-
         public string Player { get; set; }
         public string Hash { get; set; }
         public Hits Hits { get; set; }
         public int ScoreObtained { get; set; }
+        public short? MaxCombo { get; set; }
         public bool PerfectCombo { get; set; }
         public string ModsUsed {
             get { return modsUsed; }
@@ -36,11 +34,22 @@ namespace OsuTools.Models {
 
         public double Accuracy { get { return GetAcc(Hits); } }
         public DateTime Date { get { return GetDate((ulong)Timestand); } }
-        #endregion
-
-        #region Private Property
 
         private string modsUsed;
         #endregion
+
+        #region Properties
+
+        public string ScoreBarGraph { get; set; }
+
+        public ReplayFrame[] Frames { get; set; }
+        #endregion
+
+        public static Replay Read(string path) {
+
+            // If the .osr doesn't have replay data ( size < 2KB )
+            // ScoreBarGraph & Frames will be null ( uninitialized )
+            return (Replay)new BinaryReader(File.OpenRead(path)).ReadScore(true);
+        }
     }
 }
