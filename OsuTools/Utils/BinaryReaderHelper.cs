@@ -133,7 +133,7 @@ namespace OsuTools.Utils {
         internal static string ReadOsuString(this BinaryReader reader) {
 
             /// <summary>
-            /// Get un Unsigned Little Endian base 128 interger from the file
+            /// Get an Unsigned Little Endian base 128 interger from the file
             /// </summary>
             /// <param name="reader">The binary reader</param>
             /// <returns>Int buffer</returns>
