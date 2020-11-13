@@ -1,5 +1,5 @@
 ﻿using System;
-using OsuTools.Models;
+using OsuTools.Models.Enums;
 
 #nullable enable
 namespace OsuTools.Utils {

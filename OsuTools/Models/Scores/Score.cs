@@ -1,4 +1,5 @@
 ﻿using System;
+using OsuTools.Models.Enums;
 using static OsuTools.Utils.ScoreHelper;
 
 namespace OsuTools.Models.Scores {
@@ -30,8 +31,8 @@ namespace OsuTools.Models.Scores {
         public long Timestand { get; set; }
         public long OnlineScoreID { get; set; }
 
-        public double Accuracy { get { return GetAcc(Hits); } }
-        public DateTime Date { get { return GetDate((ulong)Timestand); } }
+        public double Accuracy => GetAcc(Hits);
+        public DateTime Date => GetDate((ulong)Timestand);
         #endregion
 
         #region Private Field

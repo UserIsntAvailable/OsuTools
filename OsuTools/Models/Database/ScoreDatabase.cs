@@ -13,17 +13,20 @@ namespace OsuTools.Models.Database {
             foreach (var beatmap in Beatmaps) {
 
                 foreach (var score in beatmap.Scores) {
+
                     yield return score;
                 }
             }
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-            => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         #endregion
+
+        #region Public Properties
 
         public int Version { get; set; }
 
-        public IEnumerable<Beatmap> Beatmaps { get; set; }
+        public (string Hash, Score[] Scores)[] Beatmaps { get; set; }
+        #endregion
     }
 }

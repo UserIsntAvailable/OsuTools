@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Text;
-using OsuTools.Models;
+using OsuTools.Models.Enums;
 using OsuTools.Models.Scores;
 
 #nullable enable

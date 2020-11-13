@@ -1,36 +1,27 @@
 ﻿namespace OsuTools.Models.Scores {
-    public struct Hits {
+    public class Hits {
 
-        #region Constructor
+        // Change constructor implementation
 
-        public Hits(short hit300, short hit100, short hit50, short gekis, short katus, short misses) {
+        public Hits(short hit300, short hit100, short hit50, short gekis, short katus, short misses)
+            => (Hit300, Hit100, Hit50, Gekis, Katus, Misses) = (hit300, hit100, hit50, gekis, katus, misses);
 
-            Hit300 = hit300;
-            Hit100 = hit100;
-            Hit50 = hit50;
-            Gekis = gekis;
-            Katus = katus;
-            Misses = misses;
-        }
+        #region Public Properties
 
-        public override string ToString() {
-            return $"300:{Hit300} | _300:{Gekis} | 100:{Hit100} | _100:{Katus} | 50:{Hit50} | Miss:{Misses}";
-        }
+        public short Hit300 { get; set; }
+
+        public short Hit100 { get; set; }
+
+        public short Hit50 { get; set; }
+
+        public short Gekis { get; set; }
+
+        public short Katus { get; set; }
+
+        public short Misses { get; set; }
         #endregion
 
-        #region Properties
-
-        public short Hit300 { get; internal set; }
-
-        public short Hit100 { get; internal set; }
-
-        public short Hit50 { get; internal set; }
-
-        public short Gekis { get; internal set; }
-
-        public short Katus { get; internal set; }
-
-        public short Misses { get; internal set; }
-        #endregion
+        public override string ToString()
+            => $"300:{Hit300} | _300:{Gekis} | 100:{Hit100} | _100:{Katus} | 50:{Hit50} | Miss:{Misses}";
     }
 }

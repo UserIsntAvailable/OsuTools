@@ -26,6 +26,7 @@ namespace OsuTools.Tests.Tools.Readers {
         [Fact]
         // This is a Local Test. My Songs folder size is 74.5GB so... I can't copy to Resources.
         // I will create an OsuDatabaseWriter in the future so I would create an osu!.db perzonalized.
+		// This was write the 7/26/2020 DO A THEORY!!!
         public void OsuFileParserPlusOsuDatabaseParserTest() {
 
             filePath = GetResourcePathFile("osu!.db");

@@ -27,7 +27,9 @@ namespace OsuTools.Tools.Readers {
                 Version = Reader.ReadInt32(),
 
                 // Reader.ReadInt32() = The total number of Beatmaps in the score.db
-                Beatmaps = from _ in Enumerable.Range(0, Reader.ReadInt32()) select ReadBeatmap()
+                Beatmaps = Enumerable.Range(0, Reader.ReadInt32())
+                .Select(b => ReadBeatmap())
+                .ToArray()
             };
 
             return scoreDatabase;
@@ -36,19 +38,17 @@ namespace OsuTools.Tools.Readers {
         /// <summary>
         /// Get Beatmaps scores from <see cref="ScoreDatabase">
         /// </summary>
-        /// <returns>Beatmaps with his scores</returns>
-        private static Beatmap ReadBeatmap() {
+        /// <returns>The beatmap with hash and his scores</returns>
+        private static (string, Score[]) ReadBeatmap() {
 
-            // Beatmap Hash
-            Reader.ReadOsuString();
+            var beatmapHash = Reader.ReadOsuString();
 
-            Beatmap beatmap = new Beatmap() {
+            // Reader.ReadInt32() = Number of Scores mades in this Beatmap
+            var scores = Enumerable.Range(0, Reader.ReadInt32())
+                .Select(s => (Score)Reader.ReadScore(false))
+                .ToArray();
 
-                // Reader.ReadInt32() = Number of Scores mades in this Beatmap
-                Scores = from _ in Enumerable.Range(0, Reader.ReadInt32()) select (Score)Reader.ReadScore(false)
-            };
-
-            return beatmap;
+            return (beatmapHash, scores);
         }
     }
 }

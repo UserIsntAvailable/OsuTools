@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Text;
+using System.Linq;
 using System.Reflection;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
-using OsuTools.Models;
 using OsuTools.Exceptions;
+using OsuTools.Models.Enums;
 using OsuTools.Models.Beatmaps;
-using static OsuTools.Utils.EnumHelper;
 
 namespace OsuTools.Tools.Readers {
     public static class OsuFileReader {
@@ -18,7 +17,7 @@ namespace OsuTools.Tools.Readers {
         /// <summary>
         /// Returned from Parse()
         /// </summary>
-        private static readonly Beatmap Beatmap = new Beatmap();
+        private static readonly OsuFileBeatmap Beatmap = new OsuFileBeatmap();
 
         /// <summary>
         /// Sections that I will not use on this parser ( Simply because I don't need them )
@@ -59,13 +58,14 @@ namespace OsuTools.Tools.Readers {
         /// </summary>
         /// <param name="path">The path of the .osu</param>
         /// <returns><see cref="Beatmap"> Object</returns>
-        public static Beatmap Read(string path) {
+        public static OsuFileBeatmap Read(string path) {
 
             Match keyvalue;
             bool validFile = false;
             string currentSection = string.Empty;
 
-            Beatmap.Hash = File.ReadAllBytes(path).ConvertToMD5();
+            string hash = string.Join("", MD5.Create().ComputeHash(File.ReadAllBytes(path))
+                .Select(h => h.ToString("x2")));
 
             foreach (var line in File.ReadAllLines(path)) {
 
@@ -76,6 +76,8 @@ namespace OsuTools.Tools.Readers {
                 if (!validFile) {
 
                     Match versionMatch = osuversionPattern.Match(line);
+
+                    // Modified Exceptio for versio prop...
 
                     if (versionMatch.Success) {
 
@@ -90,7 +92,7 @@ namespace OsuTools.Tools.Readers {
                     }
 
                     else {
-                        throw new OsuFileFormatException($"The line: {line} isn't well formated");
+                        throw new OsuFileFormatException($"The line: {line} isn't well formated", "");
                     }
                 }
 
@@ -125,29 +127,7 @@ namespace OsuTools.Tools.Readers {
                 }
             }
 
-            return Beatmap;
-        }
-
-        #region Private Methods
-
-        /// <summary>
-        /// Get the MD5 hash representation from this string
-        /// </summary>
-        /// <param name="text">Input that will be converted to MD5</param>
-        /// <returns>Hash MD5 of the input</returns>
-        private static string ConvertToMD5(this byte[] textBytes) {
-
-            StringBuilder sb = new StringBuilder();
-
-            MD5 md5 = MD5.Create();
-
-            byte[] hash = md5.ComputeHash(textBytes);
-
-            for (int i = 0; i < hash.Length; i++) {
-                sb.Append(hash[i].ToString("x2"));
-            }
-
-            return sb.ToString();
+            return new OsuFileBeatmap();
         }
 
         /// <summary>
@@ -158,7 +138,7 @@ namespace OsuTools.Tools.Readers {
         private static void SetValueToBeatmapProperty(string propertyName, object value) {
 
             // Get the PropertyInfo of the Beatmap
-            PropertyInfo property = typeof(Beatmap).GetProperty(propertyName);
+            PropertyInfo property = typeof(OsuFileBeatmap).GetProperty(propertyName);
 
             // If this property doesn't exits on the Beatmap Type, return
             if (property == null) return;
@@ -184,6 +164,5 @@ namespace OsuTools.Tools.Readers {
                 property.SetValue(Beatmap, value);
             }
         }
-        #endregion
     }
 }

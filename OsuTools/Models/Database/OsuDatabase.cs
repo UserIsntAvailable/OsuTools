@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 
+#if TESTMODE
 namespace OsuTools.Models.Database {
+
     public class OsuDatabase : IEnumerable<Beatmap> {
         
         #region IEnumerable Interface
@@ -20,6 +22,8 @@ namespace OsuTools.Models.Database {
 
         public int Version { get; set; }
 
-        public IEnumerable<Beatmap> Beatmaps { get; set; }
+        public Beatmap[] Beatmaps { get; set; }
     }
+
 }
+#endif

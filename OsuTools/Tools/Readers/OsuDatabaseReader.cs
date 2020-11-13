@@ -1,15 +1,15 @@
 ﻿using System.IO;
 using System.Linq;
 using OsuTools.Utils;
-using OsuTools.Models;
+using OsuTools.Models.Enums;
 using OsuTools.Models.Database;
 using OsuTools.Models.Beatmaps;
-using static OsuTools.Utils.EnumHelper;
 
+#if TESTMODE
 namespace OsuTools.Tools.Readers {
     public static class OsuDatabaseReader {
 
-        #region Private fields
+#region Private fields
 
         /// <summary>
         /// Reader used from Parse.
@@ -21,7 +21,7 @@ namespace OsuTools.Tools.Readers {
         /// </summary>
         internal static int dbVersion;
 
-        #region Stars Rating
+#region Stars Rating
 
         private static double starRatingStandard;
 
@@ -30,8 +30,8 @@ namespace OsuTools.Tools.Readers {
         private static double starRatingCTB;
 
         private static double starRatingMania;
-        #endregion
-        #endregion
+#endregion
+#endregion
 
         /// <summary>
         /// Parse an osu!.db
@@ -57,7 +57,7 @@ namespace OsuTools.Tools.Readers {
                 Version = dbVersion,
 
                 // Reader.ReadInt32() = The total number of Beatmaps in the ScoreDatabase
-                Beatmaps = from _ in Enumerable.Range(0, Reader.ReadInt32()) select ReadBeatmap()
+                Beatmaps = (from _ in Enumerable.Range(0, Reader.ReadInt32()) select ReadBeatmap()).ToArray()
             };
 
             return osuDatabase;
@@ -131,7 +131,7 @@ namespace OsuTools.Tools.Readers {
              * or you can debug this by yourself. */
             if (dbVersion >= 20140609) {
 
-                #region Standard Star Rating
+#region Standard Star Rating
 
                 // Number of Int-Double Pair of Standard to read
                 int nbIDPStardard = Reader.ReadInt32();
@@ -146,9 +146,9 @@ namespace OsuTools.Tools.Readers {
                         Reader.ReadIntDoublePair();
                     }
                 }
-                #endregion
+#endregion
 
-                #region Taiko Star Rating
+#region Taiko Star Rating
 
                 // Number of Int-Double Pair of Taiko to read
                 int nbIDPTaiko = Reader.ReadInt32();
@@ -163,9 +163,9 @@ namespace OsuTools.Tools.Readers {
                         Reader.ReadIntDoublePair();
                     }
                 }
-                #endregion
+#endregion
 
-                #region CatchTheBeat Star Rating
+#region CatchTheBeat Star Rating
 
                 // Number of Int-Double Pair of CTB to read
                 int nbIDPCTB = Reader.ReadInt32();
@@ -180,9 +180,9 @@ namespace OsuTools.Tools.Readers {
                         Reader.ReadIntDoublePair();
                     }
                 }
-                #endregion
+#endregion
 
-                #region Mania Star Rating
+#region Mania Star Rating
 
                 // Number of Int-Double Pair of mania to read
                 int nbIDPMania = Reader.ReadInt32();
@@ -197,7 +197,7 @@ namespace OsuTools.Tools.Readers {
                         Reader.ReadIntDoublePair();
                     }
                 }
-                #endregion
+#endregion
             }
 
             // (Int) Drain Time ( seconds )
@@ -291,3 +291,4 @@ namespace OsuTools.Tools.Readers {
         }
     }
 }
+#endif

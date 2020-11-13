@@ -1,9 +1,9 @@
-﻿using System.IO;
+﻿using SevenZip;
+using System.IO;
 using System.Text;
-using OsuTools.Models;
 using OsuTools.Exceptions;
+using OsuTools.Models.Enums;
 using OsuTools.Models.Scores;
-using SevenZip;
 
 namespace OsuTools.Utils {
     internal static class BinaryReaderHelper {
@@ -14,7 +14,7 @@ namespace OsuTools.Utils {
         /// <param name="reader">The binary reader</param>
         /// <param name="isReplay">Specified is this will read a Replay</param>
         /// <returns>IScore intefarce that will be casted later</returns>
-        internal static IScore ReadScore(this BinaryReader reader, bool isReplay){
+        internal static IScore ReadScore(this BinaryReader reader, bool isReplay) {
 
             // Using the dinamic object slow down the fuction
             // IDK if I will change this on the future from 
@@ -113,12 +113,12 @@ namespace OsuTools.Utils {
 
                     lastTime += long.Parse(split[0]);
 
-                    score.Frames[i] = new ReplayFrame(
-                        long.Parse(split[0]),
-                        lastTime,
-                        float.Parse(split[1]),
-                        float.Parse(split[2]),
-                        (ReplayKeyStatus)int.Parse(split[3]));
+                    score.Frames[i] = new ReplayFrame() {
+                        Key = (ReplayKeyStatus)int.Parse(split[3]),
+                        TimeDiff = long.Parse(split[0]),
+                        CurrentTime = lastTime,
+                        MousePosition = (float.Parse(split[1]), float.Parse(split[2])),
+                    };
                 }
             }
 
