@@ -5,6 +5,7 @@ using OsuTools.Tools.Readers;
 using OsuTools.Models.Database;
 using static OsuTools.Tests.Resources.ResourcesHelper;
 
+#if TESTMODE
 namespace OsuTools.Tests.Tools.Readers {
     public class OsuDatabaseReaderTests {
 
@@ -49,3 +50,4 @@ namespace OsuTools.Tests.Tools.Readers {
         }
     }
 }
+#endif

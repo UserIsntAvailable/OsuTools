@@ -1,6 +1,6 @@
 ﻿using Xunit;
 using System;
-using OsuTools.Models;
+using OsuTools.Models.Enums;
 using OsuTools.Models.Scores;
 using static OsuTools.Tests.Resources.ResourcesHelper;
 
@@ -20,7 +20,7 @@ namespace OsuTools.Tests.Tools.Readers {
             Assert.Equal("ddacbb2305f94dc0998bb85837c569f1", replay.BeatmapHash);
             Assert.Equal("ANDavid1611", replay.Player);
             // Hash: IDK it is posible to calculate the Hash of a .osr file
-            Assert.Equal(new Hits(298, 2, 0, 73, 1, 0), replay.Hits);
+            Assert.Equal(new Hits(298, 2, 0, 73, 1, 0).ToString(), replay.Hits.ToString());
             Assert.Equal(4262174, replay.ScoreObtained);
             Assert.Equal((short)482, replay.MaxCombo);
             Assert.True(replay.PerfectCombo);

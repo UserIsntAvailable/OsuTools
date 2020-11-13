@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿#if TESTMODE
+
+using Xunit;
 using OsuTools.Models;
 using OsuTools.Exceptions;
 using OsuTools.Tools.Readers;
@@ -65,3 +67,4 @@ namespace OsuTools.Tests.Tools.Readers {
         }
     }
 }
+#endif
