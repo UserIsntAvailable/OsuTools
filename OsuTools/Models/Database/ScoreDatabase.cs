@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using OsuTools.Models.Scores;
-using OsuTools.Models.Beatmaps;
 
 namespace OsuTools.Models.Database {
     public class ScoreDatabase : IEnumerable<Score> {

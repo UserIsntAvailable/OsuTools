@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using System.Linq;
 using OsuTools.Utils;
-using OsuTools.Models.Beatmaps;
 using OsuTools.Models.Database;
 using OsuTools.Models.Scores;
 

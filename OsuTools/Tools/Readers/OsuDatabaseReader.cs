@@ -3,7 +3,6 @@ using System.Linq;
 using OsuTools.Utils;
 using OsuTools.Models.Enums;
 using OsuTools.Models.Database;
-using OsuTools.Models.Beatmaps;
 
 #if TESTMODE
 namespace OsuTools.Tools.Readers {

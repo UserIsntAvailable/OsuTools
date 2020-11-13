@@ -1,5 +1,4 @@
-﻿using OsuTools.Models.Beatmaps;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 #if TESTMODE

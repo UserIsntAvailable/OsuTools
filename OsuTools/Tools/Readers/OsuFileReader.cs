@@ -7,12 +7,12 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using OsuTools.Exceptions;
 using OsuTools.Models.Enums;
-using OsuTools.Models.Beatmaps;
 
+#if TESTMODE
 namespace OsuTools.Tools.Readers {
     public static class OsuFileReader {
 
-        #region Private Properties
+#region Private Properties
 
         /// <summary>
         /// Returned from Parse()
@@ -29,7 +29,7 @@ namespace OsuTools.Tools.Readers {
         /// </summary>
         private static readonly List<string> genericProperties = new List<string> { "TimingPoints", "HitObjects" };
 
-        #region Private Regex Patterns
+#region Private Regex Patterns
 
         /// <summary>
         /// Sections such as [General], [Metadata], etc...
@@ -50,8 +50,8 @@ namespace OsuTools.Tools.Readers {
         /// A string.Empty
         /// </summary>
         private static readonly Regex blanklinePattern = new Regex(@"^[\s\ufeff\x7f]*$");
-        #endregion
-        #endregion
+#endregion
+#endregion
 
         /// <summary>
         /// Parse an .osu file
@@ -166,3 +166,4 @@ namespace OsuTools.Tools.Readers {
         }
     }
 }
+#endif
