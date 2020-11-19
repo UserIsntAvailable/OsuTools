@@ -1,1 +1,2 @@
 # OsuTools
+Not using/developing this libary anymore. At this point I'm just copying the osu! wiki and loosing time writing code that already exists. Instead I will be using the [osu! legacy code](https://github.com/ppy/osu/tree/master/osu.Game)
